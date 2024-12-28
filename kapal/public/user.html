@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Panel - Pengelolaan Kapal</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <h1>User Panel - Pengelolaan Data Kapal Nelayan</h1>
+  <div id="user-panel">
+    <h2>Selamat datang, <span id="username"></span></h2>
+    <button onclick="fetchShips()">Lihat Semua Kapal</button>
+    <button onclick="logout()">Logout</button>
+    <div id="ship-list"></div>
+  </div>
+
+  <h2>WebSocket Notifications</h2>
+  <ul id="notifications"></ul>
+
+  <script src="/js/user_script.js"></script>
+  <script>
+    const socket = new WebSocket('ws://localhost:3300');
+
+    socket.addEventListener('open', function (event) {
+      console.log('Connected to WebSocket server.');
+    });
+
+    socket.addEventListener('message', function (event) {
+      console.log('Message from server ', event.data);
+      const notifications = document.getElementById('notifications');
+      const li = document.createElement('li');
+      li.textContent = event.data;
+      notifications.appendChild(li);
+    });
+
+    socket.addEventListener('close', function (event) {
+      console.log('Disconnected from WebSocket server.');
+    });
+  </script>
+</body>
+</html>

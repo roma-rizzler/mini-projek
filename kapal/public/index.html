@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pengelolaan Kapal - Register & Login</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <h1>Pengelolaan Data Kapal Nelayan</h1>
+
+  <div id="login">
+    <h2>Login</h2>
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="login()">Login</button>
+    <p id="login-message"></p>
+    <p>Belum punya akun? <a href="#" onclick="showRegister()">Daftar disini</a></p>
+  </div>
+
+  <div id="register" style="display: none;">
+    <h2>Register</h2>
+    <input type="text" id="reg_username" placeholder="Username">
+    <input type="password" id="reg_password" placeholder="Password">
+    <select id="reg_role">
+      <option value="user">User</option>
+      <option value="admin">Admin</option>
+    </select>
+    <button onclick="register()">Register</button>
+    <p id="register-message"></p>
+    <p>Sudah punya akun? <a href="#" onclick="showLogin()">Login disini</a></p>
+  </div>
+
+  <script src="/js/script.js"></script>
+</body>
+</html>
